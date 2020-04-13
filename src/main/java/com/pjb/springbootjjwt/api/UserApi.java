@@ -22,14 +22,14 @@ import java.util.TimeZone;
  * @date 2018-07-08 20:45
  */
 @RestController
-@RequestMapping("api")
+//@RequestMapping("users")
 public class UserApi {
     @Autowired
     UserService userService;
     @Autowired
     TokenService tokenService;
     //注册
-    @PostMapping("/login2")
+    @PostMapping("/users")
     public Object sign_in(@RequestBody User user){
 //        SimpleDateFormat dateFormatGmt = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 //        dateFormatGmt.setTimeZone(TimeZone.getTimeZone("UTC"));
@@ -47,8 +47,8 @@ public class UserApi {
 
         }
     }
-
-    @PostMapping("/login")
+    //登录
+    @PostMapping("/users/login")
     @ResponseBody
     public Object login( @RequestBody User user){
         System.out.println(user);
