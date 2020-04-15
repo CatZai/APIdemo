@@ -1,21 +1,28 @@
 package com.pjb.springbootjjwt.service;
-
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
+import java.util.Date;
 import com.pjb.springbootjjwt.entity.User;
 import org.springframework.stereotype.Service;
 
-
-/**
- * @author jinbin
- * @date 2018-07-08 21:04
+/***
+ * token 下发
+ * @Title: TokenService.java
+ * @author MRC
+ * @date 2019年5月27日 下午5:40:25
+ * @version V1.0
  */
 @Service("TokenService")
 public class TokenService {
+
     public String getToken(User user) {
-        String token="";
-        token= JWT.create().withAudience(user.getId())// 将 user id 保存到 token 里面
-                .sign(Algorithm.HMAC256(user.getPassword()));// 以 password 作为 token 的密钥
+        Date start = new Date();
+        long currentTime = System.currentTimeMillis() + 60* 60 * 1000;//一小时有效时间
+        Date end = new Date(currentTime);
+        String token = "";
+
+        token = JWT.create().withAudience(user.getId()).withIssuedAt(start).withExpiresAt(end)
+                .sign(Algorithm.HMAC256(user.getPassword()));
         return token;
     }
 }

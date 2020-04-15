@@ -8,6 +8,7 @@ import com.pjb.springbootjjwt.annotation.UserLoginToken;
 import com.pjb.springbootjjwt.entity.User;
 import com.pjb.springbootjjwt.service.TokenService;
 import com.pjb.springbootjjwt.service.UserService;
+import com.pjb.springbootjjwt.util.TokenUtil;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -70,9 +71,22 @@ public class UserApi {
         }
     }
     
-    @UserLoginToken
-    @GetMapping("/getMessage")
-    public String getMessage(){
-        return "你已通过验证";
-    }
+//    @UserLoginToken
+//   // @GetMapping("/getMessage")
+//    @GetMapping("/records")
+//    public String getMessage(){
+//        return "你已通过验证";
+//    }
+@UserLoginToken
+@GetMapping("/getMessage")
+public String getMessage2() {
+
+    // 取出token中带的用户id 进行操作
+    System.out.println(TokenUtil.getTokenUserId());
+
+    return "你已通过验证";
 }
+}
+
+
+
