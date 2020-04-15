@@ -3,30 +3,15 @@ package com.pjb.springbootjjwt.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-class startMeta1{
-    private String parentTagName;
-    private int parentIndex;
-    private int textOffset;
 
-}
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-class endMeta1{
-    private String parentTagName;
-    private int parentIndex;
-    private int textOffset;
-
-}
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class Source {
+
+
     /**
-     * fSourceId : d1fbad92-c4ee-4ed1-9fb2-8ed3e7af266b
+     * sourceId : d1fbad92-c4ee-4ed1-9fb2-8ed3e7af266b
      * startMeta : {"parentTagName":"P","parentIndex":10,"textOffset":0}
      * endMeta : {"parentTagName":"P","parentIndex":10,"textOffset":161}
      * text : 我们已经成功创建了第一个 Vue 应用！看起来这跟渲染一个字符串模板非常类似，但是 Vue 在背后做了大量工作。现在数据和 DOM 已经被建立了关联，所有东西都是响应式的。我们要怎么确认呢？打开你的浏览器的 JavaScript 控制台 (就在这个页面打开)，并修改 app.message 的值，你将看到上例相应地更新。
@@ -35,7 +20,7 @@ public class Source {
      * link : https://cn.vuejs.org/v2/guide/
      */
 
-    private String fSourceId;
+    private String sourceId;
     private StartMetaBean startMeta;
     private EndMetaBean endMeta;
     private String text;
@@ -43,12 +28,12 @@ public class Source {
     private String note;
     private String link;
 
-    public String getfSourceId() {
-        return fSourceId;
+    public String getSourceId() {
+        return sourceId;
     }
 
-    public void setfSourceId(String fSourceId) {
-        this.fSourceId = fSourceId;
+    public void setSourceId(String sourceId) {
+        this.sourceId = sourceId;
     }
 
     public StartMetaBean getStartMeta() {
@@ -170,21 +155,5 @@ public class Source {
             this.textOffset = textOffset;
         }
     }
-//    private String fSourceId;
-//    private List<startMeta1> startMeta;
-//    private List<endMeta1> endMeta;
-//    private String text;
-//    private String tint;
-//    private String note;
-//    private String link;
-//
-//    public String getfSourceId() {
-//        return fSourceId;
-//    }
-//
-//    public void setfSourceId(String fSourceId) {
-//        this.fSourceId = fSourceId;
-//    }
-
 }
 

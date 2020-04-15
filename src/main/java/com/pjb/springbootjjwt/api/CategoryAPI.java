@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
+
 @RestController
 public class CategoryAPI {
     @Autowired
@@ -21,7 +23,8 @@ public class CategoryAPI {
         JSONObject jsonObject=new JSONObject();
         Category categoryForBase=categoryService.findfCategoryId(category);
         if(categoryForBase==null){
-            categoryService.addCategory(category.getName(),category.getfCategoryId());
+            categoryService.addCategory(category.getName(),category.getCategoryId());
+
             jsonObject.put("message","创建成功");
             return jsonObject;
         }else {

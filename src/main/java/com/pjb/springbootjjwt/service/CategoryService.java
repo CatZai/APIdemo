@@ -12,7 +12,7 @@ public class CategoryService {
     CategoryMapper categoryMapper;
 
     public Category findfCategoryId(Category category) {
-        return categoryMapper.findfCategoryId(category.getfCategoryId());
+        return categoryMapper.findfCategoryId(category.getCategoryId());
     }
 
     public int addCategory(String name, String fCategoryId){return categoryMapper.addCategory(name, fCategoryId);}

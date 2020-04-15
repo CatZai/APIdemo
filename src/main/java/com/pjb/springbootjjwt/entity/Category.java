@@ -1,23 +1,19 @@
 package com.pjb.springbootjjwt.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.NoArgsConstructor;
 
 //@Data
 //@AllArgsConstructor
 @NoArgsConstructor//public Category(){}
 public class Category {
-    String Id;
-   private String name;
-   private String fCategoryId;
-    String create_time;
-    String update_time;
 
-    public Category(String name, String fCategoryId) {
-        this.name = name;
-        this.fCategoryId = fCategoryId;
-    }
+    /**
+     * name : 分类名称2
+     * categoryId : 546546546045
+     */
+
+    private String name;
+    private String categoryId;
 
     public String getName() {
         return name;
@@ -27,12 +23,11 @@ public class Category {
         this.name = name;
     }
 
-    public String getfCategoryId() {
-        return fCategoryId;
+    public String getCategoryId() {
+        return categoryId;
     }
 
-    public void setfCategoryId(String fCategoryId) {
-        this.fCategoryId = fCategoryId;
+    public void setCategoryId(String categoryId) {
+        this.categoryId = categoryId;
     }
-
 }
