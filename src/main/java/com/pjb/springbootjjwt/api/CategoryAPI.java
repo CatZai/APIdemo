@@ -23,7 +23,7 @@ public class CategoryAPI {
         JSONObject jsonObject=new JSONObject();
         Category categoryForBase=categoryService.findfCategoryId(category);
         if(categoryForBase==null){
-            categoryService.addCategory(category.getName(),category.getCategoryId());
+            categoryService.addCategory(category);
 
             jsonObject.put("message","创建成功");
             return jsonObject;

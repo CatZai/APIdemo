@@ -15,5 +15,5 @@ public class CategoryService {
         return categoryMapper.findfCategoryId(category.getCategoryId());
     }
 
-    public int addCategory(String name, String fCategoryId){return categoryMapper.addCategory(name, fCategoryId);}
+    public int addCategory(Category category){return categoryMapper.addCategory(category);}
 }
