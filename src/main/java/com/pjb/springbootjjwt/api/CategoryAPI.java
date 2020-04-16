@@ -1,6 +1,7 @@
 package com.pjb.springbootjjwt.api;
 
 import com.alibaba.fastjson.JSONObject;
+import com.pjb.springbootjjwt.annotation.UserLoginToken;
 import com.pjb.springbootjjwt.entity.Category;
 import com.pjb.springbootjjwt.entity.User;
 import com.pjb.springbootjjwt.service.CategoryService;
@@ -19,6 +20,7 @@ public class CategoryAPI {
     @Autowired
     CategoryService categoryService;
 
+    @UserLoginToken
     @PostMapping("/categories")
     public Object category_create(@RequestBody Category category){
         JSONObject jsonObject=new JSONObject();

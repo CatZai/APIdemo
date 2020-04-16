@@ -1,6 +1,7 @@
 package com.pjb.springbootjjwt.api;
 
 import com.alibaba.fastjson.JSONObject;
+import com.pjb.springbootjjwt.annotation.UserLoginToken;
 import com.pjb.springbootjjwt.entity.Page;
 import com.pjb.springbootjjwt.service.PageService;
 import com.pjb.springbootjjwt.util.TokenUtil;
@@ -13,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class PageAPI {
     @Autowired
     PageService pageService;
-
+    @UserLoginToken
     @PostMapping("/pages")
     public Object pages_create(@RequestBody Page page){
         JSONObject jsonObject=new JSONObject();

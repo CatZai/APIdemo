@@ -31,6 +31,7 @@ public class UserApi {
     @Autowired
     TokenService tokenService;
     //注册
+    //@UserLoginToken
     @PostMapping("/users")
     public Object sign_in(@RequestBody User user){
         JSONObject jsonObject=new JSONObject();
@@ -49,6 +50,7 @@ public class UserApi {
         }
     }
     //登录
+    //@UserLoginToken
     @PostMapping("/users/login")
     @ResponseBody
     public Object login( @RequestBody User user){

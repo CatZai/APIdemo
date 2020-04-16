@@ -14,7 +14,9 @@ import javax.servlet.http.HttpServletRequest;
 public class TokenUtil {
 
 	public static String getTokenUserId() {
-		String token = getRequest().getHeader("token");// 从 http 请求头中取出 token
+		String token = getRequest().getHeader("Authorization");// 从 http 请求头中取出 token
+			token = token.substring(7);
+
 		String userId = JWT.decode(token).getAudience().get(0);
 		return userId;
 	}
