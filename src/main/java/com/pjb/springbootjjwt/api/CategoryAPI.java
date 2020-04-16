@@ -6,6 +6,7 @@ import com.pjb.springbootjjwt.entity.User;
 import com.pjb.springbootjjwt.service.CategoryService;
 import com.pjb.springbootjjwt.service.TokenService;
 import com.pjb.springbootjjwt.service.UserService;
+import com.pjb.springbootjjwt.util.TokenUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -23,6 +24,8 @@ public class CategoryAPI {
         JSONObject jsonObject=new JSONObject();
         Category categoryForBase=categoryService.findfCategoryId(category);
         if(categoryForBase==null){
+            category.setUserId(TokenUtil.getTokenUserId());
+
             categoryService.addCategory(category);
 
             jsonObject.put("message","创建成功");

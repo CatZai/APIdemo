@@ -2,8 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.pjb.springbootjjwt.mapper.SourceMapper">
     <insert id="addSource" parameterType="com.pjb.springbootjjwt.entity.Source">
-        insert into source (sourceId,text,tint,note,link,startMeta_parentTagName,startMeta_parentIndex,startMeta_textOffset,endMeta_parentTagName,endMeta_parentIndex,endMeta_textOffset)
-        values (#{sourceId},#{text},#{tint},#{note},#{link},#{startMeta.parentTagName},#{startMeta.parentIndex},#{startMeta.textOffset},#{endMeta.parentTagName},#{endMeta.parentIndex},#{endMeta.textOffset})
+        insert into source (userId,sourceId,text,tint,note,link,startMeta_parentTagName,startMeta_parentIndex,startMeta_textOffset,endMeta_parentTagName,endMeta_parentIndex,endMeta_textOffset)
+        values (#{userId},#{sourceId},#{text},#{tint},#{note},#{link},#{startMeta.parentTagName},#{startMeta.parentIndex},#{startMeta.textOffset},#{endMeta.parentTagName},#{endMeta.parentIndex},#{endMeta.textOffset})
     </insert>
 
 </mapper>

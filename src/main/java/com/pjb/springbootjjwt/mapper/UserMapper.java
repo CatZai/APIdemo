@@ -11,5 +11,5 @@ public interface UserMapper {
     User findByUsername(@Param("username") String username);
     User findUserById(@Param("Id") String Id);
 
-    int addUser(String username,String password);
+    int addUser(User user);
 }

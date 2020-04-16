@@ -2,8 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.pjb.springbootjjwt.mapper.CategoryMapper">
     <insert id="addCategory" parameterType="com.pjb.springbootjjwt.entity.Category">
-        insert into category (name,categoryId)
-        values (#{name},#{categoryId})
+        insert into category (userId,name,categoryId)
+        values (#{userId},#{name},#{categoryId})
     </insert>
 
     <select id="findfCategoryId" resultType="com.pjb.springbootjjwt.entity.Category">

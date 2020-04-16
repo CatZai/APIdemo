@@ -17,6 +17,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Map;
 import java.util.TimeZone;
+import java.util.UUID;
 
 /**
  * @author jinbin
@@ -32,13 +33,12 @@ public class UserApi {
     //注册
     @PostMapping("/users")
     public Object sign_in(@RequestBody User user){
-//        SimpleDateFormat dateFormatGmt = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-//        dateFormatGmt.setTimeZone(TimeZone.getTimeZone("UTC"));
-//        System.out.println(dateFormatGmt.format(new Date()));
         JSONObject jsonObject=new JSONObject();
         User userForBase=userService.findByUsername(user);
         if(userForBase==null){
-            userService.addUser(user.getUsername(),user.getPassword());
+            UUID uid =UUID.randomUUID();
+            user.setId(uid.toString());
+            userService.addUser(user);
             jsonObject.put("message","注册成功");
             return jsonObject;
         }else {

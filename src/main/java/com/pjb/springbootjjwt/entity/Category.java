@@ -1,9 +1,11 @@
 package com.pjb.springbootjjwt.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
-//@Data
-//@AllArgsConstructor
+@Data
+@AllArgsConstructor
 @NoArgsConstructor//public Category(){}
 public class Category {
 
@@ -14,6 +16,7 @@ public class Category {
 
     private String name;
     private String categoryId;
+    private String userId;
 
     public String getName() {
         return name;

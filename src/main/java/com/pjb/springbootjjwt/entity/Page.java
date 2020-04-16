@@ -1,7 +1,13 @@
 package com.pjb.springbootjjwt.entity;
 
-import java.util.List;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+import java.util.List;
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Page {
 
     /**
@@ -15,7 +21,7 @@ public class Page {
     private String title;
     private String categoryId;
     private List<String> keywords;
-
+    private String userId;
     public String getLink() {
         return link;
     }

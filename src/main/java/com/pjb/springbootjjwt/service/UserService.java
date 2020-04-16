@@ -21,7 +21,7 @@ public class UserService {
     }
 
 //    @Override
-    public int addUser(String username,String password) {
-        return userMapper.addUser(username, password);
+    public int addUser(User user) {
+        return userMapper.addUser(user);
     }
 }

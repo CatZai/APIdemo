@@ -13,7 +13,7 @@
     </select>
 
     <insert id="addUser" parameterType="com.pjb.springbootjjwt.entity.User">
-        insert into user (username,password)
-        values (#{username},#{password})
+        insert into user (Id,username,password)
+        values (#{Id},#{username},#{password})
     </insert>
 </mapper>
