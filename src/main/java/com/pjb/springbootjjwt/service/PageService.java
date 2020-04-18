@@ -13,6 +13,9 @@ public class PageService {
     @Autowired
     PageMapper pageMapper;
 
+    public Page findPageByUserIdAndCategoryId(String userId,String categoryId){
+        return pageMapper.findPageByUserIdAndCategoryId(userId,categoryId);
+    }
     public int addPage(Page page){
         return  pageMapper.addPage(page);
     }

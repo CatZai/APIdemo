@@ -1,27 +1,30 @@
 package com.pjb.springbootjjwt.entity;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+
+import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class Page {
-
-    /**
-     * link : https://cn.vuejs.org/v2/guide/
-     * title : 介绍 — Vue.js
-     * keywords : ["阿甲","阿牛"]
-     * categoryId : 123334
-     */
 
     private String link;
     private String title;
     private String categoryId;
     private List<String> keywords;
     private String userId;
+    private Timestamp create_time;
+    private Timestamp update_time;
+
     public String getLink() {
         return link;
     }
@@ -46,15 +49,44 @@ public class Page {
         this.categoryId = categoryId;
     }
 
-//    public List<String> getKeywords() {
-//        return keywords;
-//    }
+
+
+    public void setKeywords(List<String> keywords) {
+        this.keywords = keywords;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public Timestamp getCreate_time() {
+        return create_time;
+    }
+
+    public void setCreate_time(Timestamp create_time) {
+        this.create_time = create_time;
+    }
+
+    public Timestamp getUpdate_time() {
+        return update_time;
+    }
+
+    public void setUpdate_time(Timestamp update_time) {
+        this.update_time = update_time;
+    }
+
     public String getKeywords(){
         String join = String.join(",", keywords);
         return join;
     }
 
-    public void setKeywords(List<String> keywords) {
-        this.keywords = keywords;
+    public void setKeywords(String keywords) {
+        this.keywords = Arrays.asList(keywords.split(","));;
     }
+
+
 }

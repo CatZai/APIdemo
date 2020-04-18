@@ -19,10 +19,6 @@ import java.util.Map;
 import java.util.TimeZone;
 import java.util.UUID;
 
-/**
- * @author jinbin
- * @date 2018-07-08 20:45
- */
 @RestController
 //@RequestMapping("users")
 public class UserApi {
@@ -43,7 +39,6 @@ public class UserApi {
             jsonObject.put("message","注册成功");
             return jsonObject;
         }else {
-
                 jsonObject.put("message","注册失败，用户存在");
                 return jsonObject;
 
@@ -72,13 +67,7 @@ public class UserApi {
             }
         }
     }
-    
-//    @UserLoginToken
-//   // @GetMapping("/getMessage")
-//    @GetMapping("/records")
-//    public String getMessage(){
-//        return "你已通过验证";
-//    }
+
 @UserLoginToken
 @GetMapping("/getMessage")
 public String getMessage2() {

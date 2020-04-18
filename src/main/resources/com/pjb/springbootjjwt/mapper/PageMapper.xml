@@ -6,4 +6,10 @@
         values (#{userId},#{categoryId},#{link},#{title},#{keywords})
     </insert>
 
+    <select id="findPageByUserIdAndCategoryId" resultType="com.pjb.springbootjjwt.entity.Page">
+        SELECT * FROM page
+        where
+        userId=#{userId} and categoryId=#{categoryId};
+    </select>
+
 </mapper>
