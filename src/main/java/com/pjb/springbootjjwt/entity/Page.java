@@ -50,11 +50,6 @@ public class Page {
     }
 
 
-
-    public void setKeywords(List<String> keywords) {
-        this.keywords = keywords;
-    }
-
     public String getUserId() {
         return userId;
     }
@@ -79,13 +74,22 @@ public class Page {
         this.update_time = update_time;
     }
 
-    public String getKeywords(){
+//    public List<String> getKeywords() {
+//        return keywords;
+//    }
+
+        public String getKeywords(){
         String join = String.join(",", keywords);
         return join;
     }
+//get   list
+//    public void setKeywords(String keywords) {
+//        this.keywords = Arrays.asList(keywords.split(","));;
+//    }
 
-    public void setKeywords(String keywords) {
-        this.keywords = Arrays.asList(keywords.split(","));;
+    //post create
+public void setKeywords(List<String> keywords) {
+    this.keywords = keywords;
     }
 
 

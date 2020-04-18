@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.pjb.springbootjjwt.annotation.UserLoginToken;
 import com.pjb.springbootjjwt.entity.Page;
+import com.pjb.springbootjjwt.entity.Page_Get;
 import com.pjb.springbootjjwt.service.PageService;
 import com.pjb.springbootjjwt.util.TokenUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,13 +14,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Arrays;
+
 @RestController
 public class PageAPI {
     @Autowired
     PageService pageService;
 
     @UserLoginToken
-    @PostMapping("/pages1")
+    @PostMapping("/pages")
     public Object pages_create(@RequestBody Page page) {
         JSONObject jsonObject = new JSONObject();
         page.setUserId(TokenUtil.getTokenUserId());
@@ -33,7 +36,10 @@ public class PageAPI {
     public Object get_pages_list(String categoryId) {
        Page page = new Page();
         JSONObject jsonObject = new JSONObject();
-        Page listFotBase = pageService.findPageByUserIdAndCategoryId(TokenUtil.getTokenUserId(), categoryId);//select
+        Page_Get listFotBase = pageService.findPageByUserIdAndCategoryId(TokenUtil.getTokenUserId(), categoryId);//select
+
+         //listFotBase.setKeywords()= Arrays.asList(listFotBase.getKeywords().split(","));
+
         if (listFotBase != null) {
             jsonObject.put("userId", listFotBase.getUserId());
             jsonObject.put("link", listFotBase.getLink());

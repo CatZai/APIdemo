@@ -6,7 +6,7 @@
         values (#{userId},#{categoryId},#{link},#{title},#{keywords})
     </insert>
 
-    <select id="findPageByUserIdAndCategoryId" resultType="com.pjb.springbootjjwt.entity.Page">
+    <select id="findPageByUserIdAndCategoryId" resultType="com.pjb.springbootjjwt.entity.Page_Get">
         SELECT * FROM page
         where
         userId=#{userId} and categoryId=#{categoryId};
