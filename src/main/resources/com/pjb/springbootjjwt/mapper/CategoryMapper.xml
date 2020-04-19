@@ -22,4 +22,10 @@
         delete from category where categoryId = #{categoryId} and userId=#{userId};
     </delete>
 
+
+    <update id="updateCategory" parameterType="String">
+        update category
+        set name = #{name}
+        where userId = #{userId} and categoryId = #{categoryId};
+    </update>
 </mapper>

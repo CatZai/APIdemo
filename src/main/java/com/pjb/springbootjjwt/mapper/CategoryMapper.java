@@ -11,5 +11,6 @@ public interface CategoryMapper {
     List finduserId(@Param("userId")String userId);
     int deleteOfcategoryId(@Param("categoryId") String categoryId,@Param("userId") String userId);
     int addCategory(Category category);
+    int updateCategory(String userId,String categoryId,String name);
 
 }

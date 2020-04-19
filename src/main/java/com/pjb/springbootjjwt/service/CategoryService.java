@@ -23,4 +23,8 @@ public class CategoryService {
         return categoryMapper.deleteOfcategoryId(categoryId,userId);
     }
     public int addCategory(Category category){return categoryMapper.addCategory(category);}
+
+    public int upadteCategory(String userId,String categoryId,String name){
+        return categoryMapper.updateCategory(userId,categoryId,name);
+    }
 }

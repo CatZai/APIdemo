@@ -65,4 +65,16 @@ public class CategoryAPI {
         }
     }
 
+
+    @RequestMapping(value = "/categories/{categoryId}",method = RequestMethod.PATCH)
+    public String update_category(@PathVariable("categoryId")String categoryId,@RequestBody Category category){
+        int status = categoryService.upadteCategory(TokenUtil.getTokenUserId(),categoryId,category.getName());
+        if(status != 0){
+            return "category更新"+status+"行";
+        }
+        else{
+            return "update失败";
+        }
+    }
+
 }
