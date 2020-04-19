@@ -6,4 +6,7 @@
         values (#{userId},#{sourceId},#{text},#{tint},#{note},#{link},#{startMeta.parentTagName},#{startMeta.parentIndex},#{startMeta.textOffset},#{endMeta.parentTagName},#{endMeta.parentIndex},#{endMeta.textOffset})
     </insert>
 
+    <delete id="deleteSource" parameterType="String"  >
+        delete from source where userId = #{userId} and sourceId=#{sourceId};
+    </delete>
 </mapper>

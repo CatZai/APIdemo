@@ -20,9 +20,19 @@ public class SourceAPI {
     public Object sources_create(@RequestBody Source source){
         JSONObject jsonObject=new JSONObject();
         source.setUserId(TokenUtil.getTokenUserId());
-
         sourceService.addSource(source);
         //return source.getEndMeta().getTextOffset();
         return "ok";
+    }
+
+    @RequestMapping(value="/sources/{sourceId}/**",method = RequestMethod.DELETE)
+    public String sources_remove(@PathVariable("sourceId")String sourceId){
+        int status = sourceService.deleteSource(sourceId,TokenUtil.getTokenUserId());
+        if(status==1){
+            return "删除source成功";
+        }
+        else{
+            return "失败";
+        }
     }
 }

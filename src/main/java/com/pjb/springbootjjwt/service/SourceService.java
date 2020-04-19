@@ -14,4 +14,8 @@ public class SourceService {
     public int addSource(Source source){
         return sourceMapper.addSource(source);
     }
+    public  int deleteSource(String sourceId,String userId){
+        return sourceMapper.deleteSource(sourceId,userId);
+    }
+
 }
