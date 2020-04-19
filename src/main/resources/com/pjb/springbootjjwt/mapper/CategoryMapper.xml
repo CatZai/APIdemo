@@ -12,4 +12,10 @@
         categoryId=#{categoryId}
     </select>
 
+    <select id="finduserId" resultType="com.pjb.springbootjjwt.entity.Category">
+        SELECT * FROM category
+        where
+        userId=#{userId};
+    </select>
+
 </mapper>
