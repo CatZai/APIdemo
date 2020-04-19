@@ -4,9 +4,33 @@ spring:
     url: jdbc:mysql://localhost:3306/api?useSSL=false
     username: root
     password: password
+#  tomcat:
+#    uri-encoding: UTF-8
+#  http:
+#    encoding:
+#      force: true
+#      charset: UTF-8
+#      enabled: true
+
 mybatis:
   config-location: classpath:mybatis.xml
 debug: true
 server:
   port: 8888
+logging:
+  path: D:/mylog
+  file: my1log.log
+
+#org:
+#  apache:
+#    tomcat:
+#      util:
+#        buf:
+#          UDecoder:
+#            ALLOW_ENCODED_SLASH: true
+
+#spring.http.encoding.force=true
+#spring.http.encoding.charset=UTF-8
+#spring.http.encoding.enabled=true
+#server.tomcat.uri-encoding=UTF-8
 

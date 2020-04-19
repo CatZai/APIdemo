@@ -18,8 +18,8 @@ public class Page_Get {
     private String categoryId;
     private List<String> keywords;
     private String userId;
-    private Timestamp create_time;
-    private Timestamp update_time;
+    private String createTime;
+    private String updateTime;
 
     //get   list
     public void setKeywords(String keywords) {
@@ -30,4 +30,5 @@ public class Page_Get {
         String join = String.join(",", keywords);
         return join;
     }
+
 }

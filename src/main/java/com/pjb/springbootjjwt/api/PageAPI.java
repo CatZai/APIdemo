@@ -9,10 +9,7 @@ import com.pjb.springbootjjwt.service.PageService;
 import com.pjb.springbootjjwt.util.TokenUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
 
@@ -34,23 +31,39 @@ public class PageAPI {
     @UserLoginToken
     @GetMapping("/pages")
     public Object get_pages_list(String categoryId) {
-       Page page = new Page();
+       //Page page = new Page();
         JSONObject jsonObject = new JSONObject();
         Page_Get listFotBase = pageService.findPageByUserIdAndCategoryId(TokenUtil.getTokenUserId(), categoryId);//select
-
-         //listFotBase.setKeywords()= Arrays.asList(listFotBase.getKeywords().split(","));
-
         if (listFotBase != null) {
             jsonObject.put("userId", listFotBase.getUserId());
             jsonObject.put("link", listFotBase.getLink());
             jsonObject.put("title", listFotBase.getTitle());
             jsonObject.put("keywords", listFotBase.getKeywords().split(","));
             jsonObject.put("category", listFotBase.getCategoryId());
-            jsonObject.put("create_time", listFotBase.getCreate_time());
-            jsonObject.put("update_time", listFotBase.getUpdate_time());
+            jsonObject.put("create_time", listFotBase.getCreateTime());
+            jsonObject.put("update_time", listFotBase.getUpdateTime());
             return jsonObject;
         } else {
             return "categoryId查不到";
+        }
+    }
+
+    @UserLoginToken
+   @GetMapping("/pages/{link}")
+    public Object get_pages_find(@PathVariable("link") String link){
+        JSONObject jsonObject = new JSONObject();
+        Page_Get findFotBase = pageService.findPageByLink(TokenUtil.getTokenUserId(), link);
+        if(findFotBase != null){
+            jsonObject.put("userId", findFotBase.getUserId());
+            jsonObject.put("link", findFotBase.getLink());
+            jsonObject.put("title", findFotBase.getTitle());
+            jsonObject.put("keywords", findFotBase.getKeywords().split(","));
+            jsonObject.put("category", findFotBase.getCategoryId());
+            jsonObject.put("create_time", findFotBase.getCreateTime());
+            jsonObject.put("update_time", findFotBase.getUpdateTime());
+            return jsonObject;
+        } else {
+            return "link查不到";
         }
     }
 }

@@ -10,6 +10,15 @@
         SELECT * FROM page
         where
         userId=#{userId} and categoryId=#{categoryId};
+<!--        SELECT userId,categoryId,title,link,keywords,create_time(operation_time,'%Y-%m-%d %H:%i:%S'),update_time(operation_time,'%Y-%m-%d %H:%i:%S') FROM page-->
+<!--        where-->
+<!--        userId=#{userId} and categoryId=#{categoryId};-->
+    </select>
+
+    <select id="findPageByLink" resultType="com.pjb.springbootjjwt.entity.Page_Get">
+        SELECT * FROM page
+        where
+        userId=#{userId} and link=#{link};
     </select>
 
 </mapper>

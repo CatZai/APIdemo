@@ -17,6 +17,10 @@ public class PageService {
     public Page_Get findPageByUserIdAndCategoryId(String userId, String categoryId){
         return pageMapper.findPageByUserIdAndCategoryId(userId,categoryId);
     }
+
+    public Page_Get findPageByLink(String userId,String link){
+        return pageMapper.findPageByLink(userId,link);
+    }
     public int addPage(Page page){
         return  pageMapper.addPage(page);
     }
