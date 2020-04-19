@@ -1,6 +1,7 @@
 package com.pjb.springbootjjwt.api;
 import com.alibaba.fastjson.JSONObject;
 import com.pjb.springbootjjwt.annotation.UserLoginToken;
+import com.pjb.springbootjjwt.entity.Category;
 import com.pjb.springbootjjwt.entity.Page;
 import com.pjb.springbootjjwt.entity.Page_Get;
 import com.pjb.springbootjjwt.service.PageService;
@@ -87,12 +88,31 @@ public class PageAPI {
         String arguments = new AntPathMatcher().extractPathWithinPattern(bestMatchingPattern, path);
          link=link+'/'+'/'+arguments;
         int status = pageService.deletePage(TokenUtil.getTokenUserId(),link);
-        if(status == 1){
+        if(status != 0){
             return "删除成功";
         }
         else{
             return "删除失败";
         }
+    }
+
+    @RequestMapping(value = "/pages/{link}/**",method = RequestMethod.PATCH)
+    public String pages_update(HttpServletRequest request,@PathVariable("link") String link,@RequestBody Category category){
+        final String path =
+                request.getAttribute(HandlerMapping.PATH_WITHIN_HANDLER_MAPPING_ATTRIBUTE).toString();
+        final String bestMatchingPattern =
+                request.getAttribute(HandlerMapping.BEST_MATCHING_PATTERN_ATTRIBUTE).toString();
+        String arguments = new AntPathMatcher().extractPathWithinPattern(bestMatchingPattern, path);
+        link=link+'/'+'/'+arguments;
+        //-------------------------------------------------------------------
+        int status = pageService.updatePage(TokenUtil.getTokenUserId(),link,category.getCategoryId());
+        if(status != 0){
+            return "更新"+status+"行";
+        }
+        else{
+            return "update失败";
+        }
+
     }
 
 }

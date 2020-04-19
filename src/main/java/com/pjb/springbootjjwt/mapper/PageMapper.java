@@ -16,6 +16,7 @@ public interface PageMapper {
 
     int deletePage(@Param("userId") String userId,@Param("link") String link);
     int addPage(Page page);
+    int updatePage(@Param("userId")String userId,String link,String categoryId);
 }
 
 

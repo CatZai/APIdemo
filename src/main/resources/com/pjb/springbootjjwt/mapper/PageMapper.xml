@@ -25,4 +25,10 @@
         delete from page where userId = #{userId} and link=#{link};
     </delete>
 
+    <update id="updatePage" parameterType="String">
+        update page
+        set categoryId = #{categoryId}
+        where userId = #{userId} and link = #{link};
+    </update>
+
 </mapper>

@@ -28,4 +28,8 @@ public class PageService {
     public int addPage(Page page){
         return  pageMapper.addPage(page);
     }
+    public int updatePage(String userId,String link,String categoryId){
+        return pageMapper.updatePage(userId,link,categoryId);
+
+    }
 }

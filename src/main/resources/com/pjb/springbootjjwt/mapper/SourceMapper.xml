@@ -9,4 +9,6 @@
     <delete id="deleteSource" parameterType="String"  >
         delete from source where userId = #{userId} and sourceId=#{sourceId};
     </delete>
+
+
 </mapper>
