@@ -18,4 +18,8 @@
         userId=#{userId};
     </select>
 
+    <delete id="deleteOfcategoryId" parameterType="String"  >
+        delete from category where categoryId = #{categoryId} and userId=#{userId};
+    </delete>
+
 </mapper>

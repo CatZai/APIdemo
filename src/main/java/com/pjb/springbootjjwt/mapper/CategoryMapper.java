@@ -9,6 +9,7 @@ public interface CategoryMapper {
 
     Category findfCategoryId(@Param("categoryId") String categoryId);
     List finduserId(@Param("userId")String userId);
+    int deleteOfcategoryId(@Param("categoryId") String categoryId,@Param("userId") String userId);
     int addCategory(Category category);
 
 }

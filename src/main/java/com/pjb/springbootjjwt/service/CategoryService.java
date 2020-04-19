@@ -19,5 +19,8 @@ public class CategoryService {
     public List finduserId(String userId){
         return categoryMapper.finduserId(userId);
     }
+    public int deleteOfcategoryId(String categoryId,String userId){
+        return categoryMapper.deleteOfcategoryId(categoryId,userId);
+    }
     public int addCategory(Category category){return categoryMapper.addCategory(category);}
 }

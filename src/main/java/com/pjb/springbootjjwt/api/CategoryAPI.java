@@ -9,10 +9,7 @@ import com.pjb.springbootjjwt.service.TokenService;
 import com.pjb.springbootjjwt.service.UserService;
 import com.pjb.springbootjjwt.util.TokenUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -43,15 +40,29 @@ public class CategoryAPI {
     @UserLoginToken
     @GetMapping("/categories")
     public List category_list(){
-        JSONObject jsonObject=new JSONObject();
+        //JSONObject jsonObject=new JSONObject();
         //Category category_val=categoryService.finduserId(TokenUtil.getTokenUserId());
         List category_val2=categoryService.finduserId(TokenUtil.getTokenUserId());
         if(category_val2!=null){
-            System.out.println(category_val2);
             return category_val2;
         }
         else{
             return category_val2;
         }
     }
+
+    @UserLoginToken
+    //@GetMapping("/categories/{categoryId}/**")
+    @RequestMapping(value="/categories/{categoryId}",method = RequestMethod.DELETE)
+    @ResponseBody
+    public String category_delete(@PathVariable("categoryId") String categoryId){
+        int status = categoryService.deleteOfcategoryId(categoryId,TokenUtil.getTokenUserId());
+        if(status == 1){
+            return "删除成功";
+        }
+        else{
+            return "删除失败";
+        }
+    }
+
 }
