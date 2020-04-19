@@ -13,6 +13,8 @@ public interface PageMapper {
 
     Page_Get findPageByUserIdAndCategoryId(@Param("userId") String userId, @Param("categoryId") String categoryId);
     Page_Get findPageByLink(@Param("userId") String userId,@Param("link")String link);
+
+    int deletePage(@Param("userId") String userId,@Param("link") String link);
     int addPage(Page page);
 }
 

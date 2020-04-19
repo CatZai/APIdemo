@@ -21,4 +21,8 @@
         userId=#{userId} and link=#{link};
     </select>
 
+    <delete id="deletePage" parameterType="String"  >
+        delete from page where userId = #{userId} and link=#{link};
+    </delete>
+
 </mapper>

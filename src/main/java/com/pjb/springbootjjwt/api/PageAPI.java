@@ -51,19 +51,16 @@ public class PageAPI {
 
     @UserLoginToken
    //@GetMapping("/pages/{link}")
-
     @RequestMapping(value="/pages/{link}/**",method = RequestMethod.GET)
     @ResponseBody
     public Object get_pages_find(HttpServletRequest request, @PathVariable("link") String link){
-
         final String path =
                 request.getAttribute(HandlerMapping.PATH_WITHIN_HANDLER_MAPPING_ATTRIBUTE).toString();
         final String bestMatchingPattern =
                 request.getAttribute(HandlerMapping.BEST_MATCHING_PATTERN_ATTRIBUTE).toString();
-
         String arguments = new AntPathMatcher().extractPathWithinPattern(bestMatchingPattern, path);
-
         String link2=link+'/'+'/'+arguments;
+        //--------------------------------------------------------------------------------------
         JSONObject jsonObject = new JSONObject();
         Page_Get findFotBase = pageService.findPageByLink(TokenUtil.getTokenUserId(), link2);
         if(findFotBase != null){
@@ -79,4 +76,23 @@ public class PageAPI {
             return "link查不到";
         }
     }
+
+    @UserLoginToken
+    @RequestMapping(value="/pages/{link}/**",method = RequestMethod.DELETE)
+    public String pages_remove(HttpServletRequest request,@PathVariable("link") String link){
+        final String path =
+                request.getAttribute(HandlerMapping.PATH_WITHIN_HANDLER_MAPPING_ATTRIBUTE).toString();
+        final String bestMatchingPattern =
+                request.getAttribute(HandlerMapping.BEST_MATCHING_PATTERN_ATTRIBUTE).toString();
+        String arguments = new AntPathMatcher().extractPathWithinPattern(bestMatchingPattern, path);
+         link=link+'/'+'/'+arguments;
+        int status = pageService.deletePage(TokenUtil.getTokenUserId(),link);
+        if(status == 1){
+            return "删除成功";
+        }
+        else{
+            return "删除失败";
+        }
+    }
+
 }

@@ -21,6 +21,10 @@ public class PageService {
     public Page_Get findPageByLink(String userId,String link){
         return pageMapper.findPageByLink(userId,link);
     }
+
+    public int deletePage(String userId,String link){
+        return pageMapper.deletePage(userId,link);
+    }
     public int addPage(Page page){
         return  pageMapper.addPage(page);
     }

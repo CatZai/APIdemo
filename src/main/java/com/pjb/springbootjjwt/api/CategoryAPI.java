@@ -55,7 +55,7 @@ public class CategoryAPI {
     //@GetMapping("/categories/{categoryId}/**")
     @RequestMapping(value="/categories/{categoryId}",method = RequestMethod.DELETE)
     @ResponseBody
-    public String category_delete(@PathVariable("categoryId") String categoryId){
+    public String category_remove(@PathVariable("categoryId") String categoryId){
         int status = categoryService.deleteOfcategoryId(categoryId,TokenUtil.getTokenUserId());
         if(status == 1){
             return "删除成功";
