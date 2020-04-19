@@ -1,6 +1,4 @@
 package com.pjb.springbootjjwt.api;
-
-import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.pjb.springbootjjwt.annotation.UserLoginToken;
 import com.pjb.springbootjjwt.entity.Page;
@@ -8,10 +6,13 @@ import com.pjb.springbootjjwt.entity.Page_Get;
 import com.pjb.springbootjjwt.service.PageService;
 import com.pjb.springbootjjwt.util.TokenUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.util.AntPathMatcher;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.HandlerMapping;
 
-import java.util.Arrays;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 
 @RestController
 public class PageAPI {
@@ -49,10 +50,22 @@ public class PageAPI {
     }
 
     @UserLoginToken
-   @GetMapping("/pages/{link}")
-    public Object get_pages_find(@PathVariable("link") String link){
+   //@GetMapping("/pages/{link}")
+
+    @RequestMapping(value="/pages/{link}/**",method = RequestMethod.GET)
+    @ResponseBody
+    public Object get_pages_find(HttpServletRequest request, @PathVariable("link") String link){
+
+        final String path =
+                request.getAttribute(HandlerMapping.PATH_WITHIN_HANDLER_MAPPING_ATTRIBUTE).toString();
+        final String bestMatchingPattern =
+                request.getAttribute(HandlerMapping.BEST_MATCHING_PATTERN_ATTRIBUTE).toString();
+
+        String arguments = new AntPathMatcher().extractPathWithinPattern(bestMatchingPattern, path);
+
+        String link2=link+'/'+'/'+arguments;
         JSONObject jsonObject = new JSONObject();
-        Page_Get findFotBase = pageService.findPageByLink(TokenUtil.getTokenUserId(), link);
+        Page_Get findFotBase = pageService.findPageByLink(TokenUtil.getTokenUserId(), link2);
         if(findFotBase != null){
             jsonObject.put("userId", findFotBase.getUserId());
             jsonObject.put("link", findFotBase.getLink());
