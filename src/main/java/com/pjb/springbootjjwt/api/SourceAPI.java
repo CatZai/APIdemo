@@ -35,4 +35,15 @@ public class SourceAPI {
             return "失败";
         }
     }
+
+    @RequestMapping(value = "/sources/{sourceId}",method = RequestMethod.PATCH)
+    public String source_update(@PathVariable("sourceId")String sourceId,@RequestBody Source source){
+        int status = sourceService.updateSource(TokenUtil.getTokenUserId(),sourceId,source.getNote());
+        if(status!=0){
+            return "source更新"+status+"行";
+        }else{
+            return "更新失败";
+        }
+    }
+
 }

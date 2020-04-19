@@ -10,5 +10,9 @@
         delete from source where userId = #{userId} and sourceId=#{sourceId};
     </delete>
 
-
+    <update id="updateSource" parameterType="String">
+        update source
+        set note = #{note}
+        where userId = #{userId} and sourceId = #{sourceId};
+    </update>
 </mapper>
